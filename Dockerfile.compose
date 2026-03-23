@@ -1,0 +1,6 @@
+# Imagen usada por docker-compose: nginx hace de proxy a /api hacia el contenedor "backend".
+FROM nginx:alpine
+COPY index.html css/ js/ /usr/share/nginx/html/
+RUN echo 'export const API_BASE = "";' > /usr/share/nginx/html/js/config.js
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

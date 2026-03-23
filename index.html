@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat con IA — DeepSeek</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="title">Chat con IA</h1>
+        <p class="subtitle">Conversación con DeepSeek API (API key solo en esta sesión del navegador)</p>
+      </header>
+
+      <main class="main">
+        <div class="hero" id="hero">
+          <p class="hero-text">
+            Pulsa <strong>Iniciar chat</strong> para abrir la ventana de conversación e introducir tu clave de API.
+          </p>
+          <button type="button" class="btn btn-primary" id="btnStart">
+            Iniciar chat
+          </button>
+        </div>
+
+        <section class="chat-shell hidden" id="chatShell" aria-hidden="true">
+          <div class="chat-header">
+            <span class="chat-status" id="chatStatus">Listo</span>
+          </div>
+          <div class="messages" id="messages" role="log" aria-live="polite"></div>
+          <form class="composer" id="formSend" autocomplete="off">
+            <label class="sr-only" for="inputMsg">Mensaje</label>
+            <textarea
+              id="inputMsg"
+              rows="1"
+              placeholder="Escribe tu mensaje…"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-send" id="btnSend">
+              Enviar
+            </button>
+          </form>
+          <div class="chat-footer">
+            <button type="button" class="btn btn-ghost" id="btnEnd">
+              Finalizar chat
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <small>Frontend estático · API en otro origen</small>
+      </footer>
+    </div>
+
+    <div class="modal-backdrop hidden" id="modalBackdrop" role="presentation"></div>
+    <div
+      class="modal hidden"
+      id="modalKey"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-card">
+        <h2 id="modalTitle">Clave de API</h2>
+        <p class="modal-desc">
+          Ingrese la clave de API de <strong>DeepSeek</strong> (desde <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener noreferrer">platform.deepseek.com</a>). No se guarda en disco en el servidor; solo se reenvía a DeepSeek en cada mensaje de esta sesión.
+        </p>
+        <form id="formKey">
+          <label class="label" for="apiKeyInput">API key</label>
+          <input
+            id="apiKeyInput"
+            name="apiKey"
+            type="password"
+            autocomplete="off"
+            placeholder="sk-… (clave de DeepSeek)"
+            required
+          />
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="btnCancelKey">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Conectar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
